@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block style %}
+    <link rel="stylesheet" href="../static/css/forum.css">
+{% endblock %}
+
+{% block titulo %}
+    <title> Registro </title>
+{% endblock %}
+
+{% block contenido %}
+    <div class="box">
+        <h3> Llene la información correspondiente </h3>
+        <br>
+        <form method="post" class="empleado-form">
+            {% csrf_token %}
+            <table class="respuesta">
+                <tr><td>Nombre: {{ form.Nombre }}</td></tr>
+                <tr><td>Apellido: {{ form.Apellido }}</td></tr>
+                <tr><td>Genero: {{ form.Genero }}</td></tr>
+            <div class="vars">
+                {% with empleados.count as sum %}
+                <input type="number" name="Num_Emp" value="{{ sum|add:'1' }}" required id="id_Num_Emp">
+                {% endwith %}
+                {{form.Fecha_Registro}}
+            </div>
+            </table>
+            <div class="barra">
+                <button class="send" type="submit" role="button"> Guardar </button>
+            </div>
+        </form>
+    </div>
+{% endblock %}
+

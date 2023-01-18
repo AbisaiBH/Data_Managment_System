@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+
+{% block style %}
+    <link rel="stylesheet" href="static/css/interface.css">
+{% endblock %}
+
+{% block titulo %}
+    <title> Gestor </title>
+{% endblock %}
+
+{% block contenido %}
+    <div class="box">
+        <div class="Menu-Busqueda">
+            <p> Busqueda por: </p>
+            <p class="opciones">
+            <input type="radio" name="opcion" value="1" onclick="choose(1)">
+            <label for="value1">Nombre</label>
+            <input type="radio" name="opcion" value="2" onclick="choose(2)">
+            <label for="value1">Apellido</label>
+            <input type="radio" name="opcion" value="3" onclick="choose(3)">
+            <label for="value1">Genero</label>
+            <input type="radio" name="opcion" value="4" onclick="choose(4)">
+            <label for="value1">Fecha-Registro</label>
+            <input type="radio" name="opcion" value="0" checked onclick="choose(0)">
+            <label for="value1">Expediente</label>
+            </p>
+            <div class="cerrar">
+              <button class="button-61" role="button" onclick="window.location.href='accounts/logout';">Cerrar sesión</button>
+            </div>
+            <div class="barra">
+                <input type="text" id="myInput" class="search__input" type="search" name="search" onkeyup="myFunction()" placeholder="Buscar...">
+            </div>
+        </div>
+    <section>
+        <h1>Datos de empleados</h1>
+        <div class="tbl-header">
+          <table cellpadding="0" cellspacing="0" border="0">
+            <thead>
+              <tr>
+                <th>Expediente</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Genero</th>
+                <th>Fecha-Registro </th>
+              </tr>
+            </thead>
+          </table>
+        </div>
+        <div class="tbl-content">
+          <table id="myTable"cellpadding="0" cellspacing="0" border="0">
+            <tbody>
+                {% for empleado in empleados %}
+              <tr>
+                <td>{{empleado.Num_Emp}} </td>
+                <td>{{empleado.Nombre}} </td>
+                <td>{{empleado.Apellido}} </td>
+                <td>{{empleado.Genero}} </td>
+                <td>{{empleado.Fecha_Registro}} </td>
+              </tr>
+                {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </section>
+        <div class="boton-space">
+            <button class="button-61" role="button" onclick="window.location.href='{% url 'Nuevo_Empleado'%}';">Agregar Registro</button>
+        </div>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+    <script src="static/js/app.js"></script>
+{% endblock %}

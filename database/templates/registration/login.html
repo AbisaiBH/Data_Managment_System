@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block style %}
+    <link rel="stylesheet" href="../../static/css/index.css">
+{% endblock %}
+
+{% block titulo %}
+    <title> Login </title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+{% endblock %}
+
+{% block contenido %}
+    <div class="centro">
+        <div class="background">
+            <div class="shape"></div>
+            <div class="shape"></div>
+        </div>
+        <form method="post">
+            <h3>Inicio de sesión</h3>
+            {% csrf_token %}
+            <label for="usuario">
+                Usuario
+                <input type="text" placeholder="Ingrese su usuario" id="username" name="username">
+            </label>
+            <label for="pass">
+                Contraseña
+                <input type="password" placeholder="Ingrese su contraseña" id="password" name="password">
+            </label>
+            <button type="submit">
+                <div class="left"></div>
+                  Iniciar sesión
+                <div class="right"></div>
+            </button>
+        </form> 
+    </div>
+{% endblock %}
